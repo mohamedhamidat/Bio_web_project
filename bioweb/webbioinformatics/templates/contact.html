@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap3 %}
+
+
+{% block head_title %} Contact | {{block.super}} {% endblock%}
+
+{% block content %}
+    <div class="container">
+      <div class='row'>
+      	{% if not full_name %}
+      	<h1>{{title}}</h1>
+      	<br>
+      	<br>
+        {% crispy form %}
+
+        {% endif %}
+
+        {% if full_name %}
+        <h1>{{title}} </h1>
+        {% endif %}
+
+
+      </div>
+    </div>
+{% endblock %}
+

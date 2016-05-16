@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load bootstrap3 %}
+
+
+{% block head_title %} DNA RNA Handling | {{block.super}} {% endblock%}
+
+
+{% block content %}
+
+
+
+<div class="jumbotron" >
+
+	<div class='form-group row' id = "div_id_title">
+<!-- 	<p class='text-align-center'>{{ title }}</p> -->
+
+	{% if error %}
+
+	<h4 class="text-danger"> <strong>Error: </strong>  {{error}} </h4> 
+
+	{% endif %}
+
+<!-- 	<p class='lead text-align-center'>To analyse your data please put a valid DNA sequence : </p>
+	<p> - Sequence should starts with '>' signe  </p>
+	<p> - Choose one option bellow  </p> -->
+{%if not sequence %}
+{% crispy form %}
+{% endif %}
+
+{%if sequence and error%}
+{% crispy form %}
+{% endif %}
+<!-- 
+	<form class='form' method='POST' action=''> {% csrf_token %}
+		
+		<input class='btn btn-default' type='submit' value='Submit' />
+	<input class='btn btn-primary' id= 'btnSubmit' type='submit' value='Submit' />
+	</form>
+
+ -->	
+
+<!-- 	
+<script>
+     $("#btnSubmit").on("click", function(e){
+          e.PreventDefault();
+          $(this).closest("form")[0].submit();
+          $(this).prop('disabled',true)
+     });
+</script>
+ -->
+
+	{%if sequence and not problem and not error %}
+  
+		<p class="text-success"> Sequence query:</p> <p style ='width:100% ; word-wrap:break-word; '>{{sequence}} </p> 
+
+		<p>{{option}}: <br> {{query}}</p>
+
+		<br>
+		<br>
+	<!-- 	<button type="button" class="btn btn-primary"> <a href="{% url 'dnarna' %} "></a> </button> -->
+		<a href="{% url 'dnarna' %} " class="btn btn-primary btn-lg active" role="button">Back to analysis</a>
+
+	{%endif%}
+
+
+<!-- 	<p>problem</p>
+
+	{{form|crispy}} -->
+
+	{% if problem%}
+	<h3 class="text-danger">{{option}}: {{problem}}</h3>
+			<br><br>
+	<a href="{% url 'dnarna' %} " class="btn btn-primary btn-lg active" role="button">Back to analysis</a>
+	{% endif %}
+<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+
+<!-- 
+	{% if problem_rna%}
+	<h3 class="text-danger">{{problem_rna}}</h3>
+			<br><br>
+	<a href="{% url 'dnarna' %} " class="btn btn-primary btn-lg active" role="button">Back to analysis</a>
+	{% endif %} -->
+
+
+{% endblock %}
+
+	</div>
+</div>
+
+
+
+
+
+
+
+

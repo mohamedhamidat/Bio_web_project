@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+
+
+
+{% block head_title %} Welcome | {{block.super}} {% endblock%}
+
+
+{% block content %}
+
+	<div class="jumbotron">
+
+		<h1>Welcome to our website</h1>
+
+		<h3> This website was created for bioinformatics tools <br>
+		 </h3>
+		<br>
+		<a class="btn btn-lg btn-primary" href="{% url 'about' %}" role="button"> Check out more  &raquo;</a>
+			<div class='row'>
+
+
+</div>
+
+	</div>
+
+
+
+{% endblock %}
